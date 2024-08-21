@@ -87,7 +87,7 @@ p {
 .buttons-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Dos columnas */
-    gap: 15px;
+    gap: 20px;
     justify-items: center;
     align-items: center;
     max-width: 500px;
