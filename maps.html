@@ -19,11 +19,28 @@
             background-color: #5fbc2d;
             padding: 10px 0;
             text-align: center;
+            position: relative;
+        }
+
+        .logo {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.3s ease;
         }
 
         .logo img {
-            max-width: 150px;
+            max-width: 180px; /* Aumenta el tamaño del logo en un 20% */
             height: auto;
+        }
+
+        .logo:hover {
+            transform: translateY(-50%) scale(1.1); /* Efecto de zoom en el logo */
+        }
+
+        nav {
+            margin-left: 200px; /* Asegura que el contenido del nav no se sobreponga al logo */
         }
 
         nav ul {
@@ -106,6 +123,10 @@
             .logo img {
                 max-width: 120px;
             }
+
+            nav {
+                margin-left: 140px; /* Ajusta el margen en pantallas más pequeñas */
+            }
         }
 
         @media (max-width: 480px) {
@@ -126,13 +147,17 @@
             .logo img {
                 max-width: 100px;
             }
+
+            nav {
+                margin-left: 100px; /* Ajusta el margen en pantallas muy pequeñas */
+            }
         }
     </style>
 </head>
 <body>
     <header>
         <div class="logo">
-            <img src="logo.png" alt="InfoPolo Logo">
+            <img src="img/logo.png" alt="InfoPolo Logo">
         </div>
         <nav>
             <ul>
@@ -162,7 +187,6 @@
     </footer>
 </body>
 </html>
-
 
 
 
