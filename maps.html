@@ -49,7 +49,7 @@
         }
 
         h1 {
-            font-size: 30px; /* Agranda el tamaño del texto */
+            font-size: 30px; /* Agranda el tamaño del texto del título */
             margin-bottom: 20px;
         }
 
@@ -67,7 +67,7 @@
             border: none;
             border-radius: 8px;
             padding: 22px 30px; /* Agranda el tamaño del botón en un 7% */
-            font-size: 19px; /* Agranda el tamaño del texto */
+            font-size: 19px; /* Agranda el tamaño del texto del botón en un 7% */
             cursor: pointer;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease;
@@ -94,12 +94,12 @@
             }
 
             .buttons-container {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr); /* Dos columnas en pantallas pequeñas */
                 gap: 15px;
             }
 
             .info-button {
-                font-size: 19px;
+                font-size: 19px; /* Mantiene el tamaño agrandado en pantallas pequeñas */
                 max-width: 220px;
             }
 
@@ -114,9 +114,9 @@
             }
 
             .info-button {
-                font-size: 17px;
+                font-size: 17px; /* Mantiene el tamaño agrandado en pantallas muy pequeñas */
                 max-width: 200px;
-                padding: 18px 25px; /* Ajusta el tamaño del botón en pantallas pequeñas */
+                padding: 18px 25px; /* Ajusta el tamaño del botón en pantallas muy pequeñas */
             }
 
             header {
@@ -162,6 +162,7 @@
     </footer>
 </body>
 </html>
+
 
 
 
