@@ -17,7 +17,7 @@ header {
 .logo {
     position: absolute;
     left: 20px;
-    top: calc(50% - 0.5cm); /* Ajusta la posición del logo subiéndolo 0.5 cm */
+    top: calc(50% - 0.2cm); /* Ajusta la posición del logo subiéndolo 0.5 cm */
     transform: translateY(-50%);
     transition: transform 0.3s ease;
     animation: logo-animate 5s infinite; /* Aplica la animación al logo */
