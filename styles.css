@@ -87,14 +87,21 @@ p {
 .buttons-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Dos columnas */
-    gap: 15px;
+    gap: 20px; /* Aumentar separación entre los botones */
     justify-items: center;
     align-items: center;
-    max-width: 500px;
+    max-width: 600px; /* Ancho máximo ajustado */
     margin: 0 auto 40px; /* Espacio extra debajo de los botones */
 }
 
-footer {
+/* Estilos específicos para los botones mencionados */
+.security-button, .general-rules-button, .button5, .button6, .access-control-button, .how-to-get-button {
+    padding: 25px 35px; /* Agrandar los botones */
+    font-size: 22px; /* Agrandar el texto */
+    margin: 15px; /* Separación adicional */
+}
+
+.footer {
     background-color: #6d6e72;
     color: #fff;
     padding: 10px 0;
@@ -120,7 +127,7 @@ footer {
 
     .buttons-container {
         grid-template-columns: 1fr 1fr; /* Dos columnas en pantallas más pequeñas */
-        gap: 10px;
+        gap: 15px;
     }
 
     .info-button {
