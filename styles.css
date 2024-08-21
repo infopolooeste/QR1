@@ -1,71 +1,46 @@
-/* Alinear los botones de navegación a la derecha */
-nav ul {
-    display: flex;
-    justify-content: flex-end;
-    list-style: none;
-    padding: 0;
-}
-
-nav ul li {
-    margin-left: 20px;
-}
-
-/* Botones principales */
-.buttons-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    justify-items: center;
-    align-items: center;
-    margin-top: 30px;
-}
-
+/* Estilo general para los botones */
 .info-button {
     background-color: #5fbc2d;
-    color: white;
+    color: #fff;
     border: none;
     border-radius: 8px;
-    padding: 20px 30px; /* Agrandar los botones */
-    font-size: 18px; /* Agrandar el texto */
+    padding: 15px 20px;
+    font-size: 18px;
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease;
     width: 100%;
-    max-width: 200px; /* Asegurar el mismo tamaño para todos */
+    max-width: 200px;
+    height: 60px; /* Ajuste del tamaño de los botones */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 10px auto; /* Para mantener la separación uniforme */
 }
 
+/* Efecto de zoom al pasar el cursor */
 .info-button:hover {
     transform: scale(1.1);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Asegurar que los botones se vean bien en pantallas pequeñas */
+/* Efecto de zoom al presionar */
+.info-button:active {
+    transform: scale(1.15); /* Aumenta el tamaño cuando se presiona */
+}
+
+/* Contenedor de botones en dos columnas */
+.buttons-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+    gap: 10px;
+    justify-items: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* Ajustes adicionales para móviles */
 @media (max-width: 768px) {
     .buttons-container {
         grid-template-columns: 1fr 1fr;
-        gap: 10px;
-    }
-
-    .info-button {
-        font-size: 16px;
-        padding: 15px 25px;
-        max-width: 180px;
-    }
-}
-
-/* Ajuste del logo */
-.logo img {
-    width: 140%; /* Agrandar el logo un 40% */
-    animation: logo-animate 5s infinite;
-    position: relative;
-    top: -0.5cm; /* Subir el logo 0.5 cm */
-    transition: transform 0.3s ease;
-}
-
-@keyframes logo-animate {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
     }
 }
