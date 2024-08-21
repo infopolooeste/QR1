@@ -36,7 +36,7 @@ header {
 }
 
 .logo img {
-    max-width: 280px; /* Agranda el tamaño del logo en un 40% */
+    max-width: 350px; /* Agranda el tamaño del logo en un 40% */
     height: auto;
 }
 
