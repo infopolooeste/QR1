@@ -1,7 +1,7 @@
 /* Estilos generales */
 body {
     font-family: Arial, sans-serif;
-    background-color: #6d6e71; /* Fondo gris */
+    background-color: #6d6e71; /* Fondo gris oscuro */
     color: #333;
     margin: 0;
     padding: 0;
@@ -101,7 +101,7 @@ p {
     margin: 15px; /* Separación adicional */
 }
 
-.footer {
+footer {
     background-color: #6d6e72;
     color: #fff;
     padding: 10px 0;
