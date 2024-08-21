@@ -16,6 +16,10 @@ header {
     padding: 10px 20px;
 }
 
+.logo {
+    margin-left: 10px; /* Mueve el logo unos pocos milímetros a la derecha */
+}
+
 .logo img {
     max-width: 220px; /* Logo más grande */
     height: auto;
@@ -159,3 +163,4 @@ footer {
         max-width: 160px;
     }
 }
+
