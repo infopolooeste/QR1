@@ -60,7 +60,7 @@ p {
     margin-bottom: 30px;
 }
 
-/* Botones uniformes con efecto de sombra y zoom al presionar */
+/* Botones uniformes con sombreado constante y efecto de zoom al presionar */
 .info-button {
     background-color: #5fbc2d;
     color: #fff;
@@ -73,17 +73,15 @@ p {
     width: 100%;
     max-width: 220px;
     text-align: center;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Sombra constante */
 }
 
 .info-button:hover {
     transform: scale(1.1);
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada al pasar el cursor */
 }
 
 .info-button:active {
     transform: scale(1.2);
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.4); /* Sombra aún más pronunciada al hacer clic */
 }
 
 .buttons-container {
