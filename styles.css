@@ -36,7 +36,7 @@ header {
 }
 
 .logo img {
-    max-width: 240px; /* Agranda el tamaño del logo en un 30% */
+    max-width: 280px; /* Agranda el tamaño del logo en un 40% */
     height: auto;
 }
 
@@ -45,7 +45,8 @@ header {
 }
 
 nav {
-    margin-left: 260px; /* Asegura que el contenido del nav no se sobreponga al logo */
+    margin-left: 300px; /* Ajusta el margen para dar espacio al logo */
+    display: inline-block;
 }
 
 nav ul {
@@ -126,11 +127,11 @@ footer {
     }
 
     .logo img {
-        max-width: 160px; /* Ajusta el tamaño del logo en pantallas pequeñas */
+        max-width: 200px; /* Ajusta el tamaño del logo en pantallas pequeñas */
     }
 
     nav {
-        margin-left: 180px; /* Ajusta el margen en pantallas más pequeñas */
+        margin-left: 200px; /* Ajusta el margen en pantallas más pequeñas */
     }
 }
 
@@ -150,11 +151,11 @@ footer {
     }
 
     .logo img {
-        max-width: 120px; /* Ajusta el tamaño del logo en pantallas muy pequeñas */
+        max-width: 140px; /* Ajusta el tamaño del logo en pantallas muy pequeñas */
     }
 
     nav {
-        margin-left: 120px; /* Ajusta el margen en pantallas muy pequeñas */
+        margin-left: 140px; /* Ajusta el margen en pantallas muy pequeñas */
     }
 }
 
