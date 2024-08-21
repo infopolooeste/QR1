@@ -1,116 +1,159 @@
-/* styles.css */
-
-body {
-    background-color: #6d6e72; /* Gris claro */
-    color: #ffffff;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-header {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    background-color: #5fbc2d; /* Verde */
-}
-
-.logo {
-    margin-right: 10mm; /* Mueve el logo 10 milímetros a la derecha */
-    animation: logo-animate 5s infinite; /* Animación del logo */
-}
-
-.logo img {
-    height: 50px; /* Ajusta el tamaño del logo según sea necesario */
-}
-
 @keyframes logo-animate {
     0% {
         transform: scale(1);
     }
     50% {
-        transform: scale(1.1);
+        transform: scale(1.1); /* Ajusta el aumento del tamaño durante la animación */
     }
     100% {
         transform: scale(1);
     }
 }
 
-nav ul {
-    list-style-type: none;
-    padding: 0;
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #6d6e72;
+    color: #fff;
     margin: 0;
-    display: flex;
+    padding: 0;
+}
+
+header {
+    background-color: #5fbc2d;
+    padding: 10px 0;
+    text-align: center;
+    position: relative;
+}
+
+.logo {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+    animation: logo-animate 5s infinite; /* Aplica la animación al logo */
+}
+
+.logo img {
+    max-width: 180px; /* Aumenta el tamaño del logo en un 20% */
+    height: auto;
+}
+
+.logo:hover {
+    transform: translateY(-50%) scale(1.1); /* Efecto de zoom en el logo */
+}
+
+nav {
+    margin-left: 200px; /* Asegura que el contenido del nav no se sobreponga al logo */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    margin: 10px 0;
 }
 
 nav ul li {
-    margin: 0 10px;
+    display: inline-block;
+    margin: 0 15px;
 }
 
 nav ul li a {
-    color: #ffffff;
+    color: #fff;
     text-decoration: none;
-    font-weight: bold;
 }
 
 main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
     padding: 20px;
+    text-align: center;
 }
 
 h1 {
-    margin: 0;
-    font-size: 2.5em;
-    color: #ffffff;
-}
-
-p {
-    font-size: 1.2em;
-    color: #ffffff;
+    font-size: 30px; /* Agranda el tamaño del texto del título */
+    margin-bottom: 20px;
 }
 
 .buttons-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas */
     gap: 20px;
-    width: 100%;
-    max-width: 600px;
-    margin: 20px auto; /* Centra el contenedor de botones */
+    justify-items: center;
+    align-items: center;
 }
 
 .info-button {
-    background-color: #5fbc2d; /* Verde */
-    color: #ffffff;
+    background-color: #5fbc2d;
+    color: #fff;
     border: none;
-    border-radius: 15px; /* Bordes más redondeados */
-    padding: 20px 40px; /* Agranda el botón en un 20% */
-    font-size: 22px; /* Aumenta el tamaño del texto */
+    border-radius: 8px;
+    padding: 22px 30px; /* Agranda el tamaño del botón en un 7% */
+    font-size: 19px; /* Agranda el tamaño del texto del botón en un 7% */
     cursor: pointer;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4), 0 3px 6px rgba(0, 0, 0, 0.3); /* Sombra para efecto 3D */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    width: 100%;
+    max-width: 215px; /* Agranda el tamaño máximo del botón */
 }
 
 .info-button:hover {
-    transform: scale(1.1); /* Efecto de zoom */
-    background-color: #4a9e2f; /* Color más oscuro en hover */
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6), 0 6px 12px rgba(0, 0, 0, 0.4); /* Sombra más pronunciada */
-}
-
-.info-button:active {
-    background-color: #3a7a1f; /* Color más oscuro al presionar */
+    transform: scale(1.1);
 }
 
 footer {
-    background-color: #5fbc2d;
-    color: #ffffff;
+    background-color: #6d6e72;
+    color: #fff;
+    padding: 30px 0;
     text-align: center;
-    padding: 10px;
+    margin-top: 40px;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 28px; /* Ajusta el tamaño del texto en pantallas medianas */
+    }
+
+    .buttons-container {
+        grid-template-columns: repeat(2, 1fr); /* Dos columnas en pantallas pequeñas */
+        gap: 15px;
+    }
+
+    .info-button {
+        font-size: 19px; /* Mantiene el tamaño agrandado en pantallas pequeñas */
+        max-width: 220px;
+    }
+
+    .logo img {
+        max-width: 120px;
+    }
+
+    nav {
+        margin-left: 140px; /* Ajusta el margen en pantallas más pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 24px; /* Ajusta el tamaño del texto en pantallas pequeñas */
+    }
+
+    .info-button {
+        font-size: 17px; /* Mantiene el tamaño agrandado en pantallas muy pequeñas */
+        max-width: 200px;
+        padding: 18px 25px; /* Ajusta el tamaño del botón en pantallas muy pequeñas */
+    }
+
+    header {
+        padding: 8px 0;
+    }
+
+    .logo img {
+        max-width: 100px;
+    }
+
+    nav {
+        margin-left: 100px; /* Ajusta el margen en pantallas muy pequeñas */
+    }
 }
