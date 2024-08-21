@@ -1,0 +1,116 @@
+/* styles.css */
+
+body {
+    background-color: #6d6e72; /* Gris claro */
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #5fbc2d; /* Verde */
+}
+
+.logo {
+    margin-right: 10mm; /* Mueve el logo 10 milímetros a la derecha */
+    animation: logo-animate 5s infinite; /* Animación del logo */
+}
+
+.logo img {
+    height: 50px; /* Ajusta el tamaño del logo según sea necesario */
+}
+
+@keyframes logo-animate {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.5em;
+    color: #ffffff;
+}
+
+p {
+    font-size: 1.2em;
+    color: #ffffff;
+}
+
+.buttons-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto; /* Centra el contenedor de botones */
+}
+
+.info-button {
+    background-color: #5fbc2d; /* Verde */
+    color: #ffffff;
+    border: none;
+    border-radius: 15px; /* Bordes más redondeados */
+    padding: 20px 40px; /* Agranda el botón en un 20% */
+    font-size: 22px; /* Aumenta el tamaño del texto */
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4), 0 3px 6px rgba(0, 0, 0, 0.3); /* Sombra para efecto 3D */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
+}
+
+.info-button:hover {
+    transform: scale(1.1); /* Efecto de zoom */
+    background-color: #4a9e2f; /* Color más oscuro en hover */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6), 0 6px 12px rgba(0, 0, 0, 0.4); /* Sombra más pronunciada */
+}
+
+.info-button:active {
+    background-color: #3a7a1f; /* Color más oscuro al presionar */
+}
+
+footer {
+    background-color: #5fbc2d;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+}
