@@ -1,115 +1,71 @@
-/* Estilos generales */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #6d6e72;
-    color: #333;
-    margin: 0;
-    padding: 0;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #5fbc2d;
-    color: #fff;
-    padding: 10px 20px;
-}
-
-.logo img {
-    max-width: 40%;
-    height: auto;
-    transform: scale(1.4); /* Aumenta el tamaño del logo un 40% */
-    animation: logo-animate 5s infinite;
-}
-
-@keyframes logo-animate {
-    0%, 100% {
-        transform: scale(1.4);
-    }
-    50% {
-        transform: scale(1.5);
-    }
-}
-
+/* Alinear los botones de navegación a la derecha */
 nav ul {
+    display: flex;
+    justify-content: flex-end;
     list-style: none;
     padding: 0;
-    margin: 0;
-    display: flex;
 }
 
 nav ul li {
     margin-left: 20px;
 }
 
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-/* Estilos del main */
-main {
-    padding: 20px;
-    text-align: center;
-}
-
-h1 {
-    font-size: 28px;
-    color: #fff;
-    margin-bottom: 20px;
-}
-
-p {
-    font-size: 18px;
-    color: #fff;
-    margin-bottom: 40px;
-}
-
+/* Botones principales */
 .buttons-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    justify-items: center;
+    align-items: center;
+    margin-top: 30px;
 }
 
 .info-button {
     background-color: #5fbc2d;
-    color: #fff;
+    color: white;
     border: none;
     border-radius: 8px;
-    padding: 15px 25px;
-    font-size: 18px;
+    padding: 20px 30px; /* Agrandar los botones */
+    font-size: 18px; /* Agrandar el texto */
     cursor: pointer;
-    transition: transform 0.3s ease;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-    width: calc(50% - 20px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    max-width: 200px; /* Asegurar el mismo tamaño para todos */
 }
 
 .info-button:hover {
-    transform: scale(1.07);
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-footer {
-    background-color: #6d6e72;
-    color: #fff;
-    padding: 10px 0;
-    text-align: center;
-    margin-top: 40px;
-}
-
-/* Estilos responsivos */
+/* Asegurar que los botones se vean bien en pantallas pequeñas */
 @media (max-width: 768px) {
+    .buttons-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
     .info-button {
-        width: calc(50% - 15px);
+        font-size: 16px;
+        padding: 15px 25px;
+        max-width: 180px;
     }
 }
 
-@media (max-width: 480px) {
-    .info-button {
-        font-size: 16px;
-        padding: 10px 15px;
-        width: calc(50% - 10px);
+/* Ajuste del logo */
+.logo img {
+    width: 140%; /* Agrandar el logo un 40% */
+    animation: logo-animate 5s infinite;
+    position: relative;
+    top: -0.5cm; /* Subir el logo 0.5 cm */
+    transition: transform 0.3s ease;
+}
+
+@keyframes logo-animate {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
     }
 }
