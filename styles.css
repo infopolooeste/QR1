@@ -1,30 +1,31 @@
 /* Estilos generales */
 body {
     font-family: Arial, sans-serif;
-    background-color: #6d6e72;
+    background-color: #f4f4f4;
     color: #333;
     margin: 0;
     padding: 0;
+    background-color: #e0e0e0; /* Fondo gris */
 }
 
 header {
-    background-color: #5fbc2d;
-    color: #fff;
-    padding: 10px 0;
-    text-align: center;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-}
-
-.logo {
-    margin-left: 20px;
+    background-color: #5fbc2d;
+    color: #fff;
+    padding: 10px 20px;
 }
 
 .logo img {
-    max-width: 200px;
+    max-width: 180px; /* Logo más grande */
+    height: auto;
     transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.2); /* Efecto de zoom en el logo */
+    animation: logo-animate 5s infinite;
 }
 
 nav ul {
@@ -32,18 +33,17 @@ nav ul {
     padding: 0;
     margin: 0;
     display: flex;
-    gap: 20px;
+    justify-content: flex-end;
 }
 
 nav ul li {
-    margin: 0;
+    margin-left: 20px;
 }
 
 nav ul li a {
     color: #fff;
     text-decoration: none;
-    padding: 10px 20px;
-    display: block;
+    font-size: 18px;
 }
 
 main {
@@ -52,9 +52,37 @@ main {
 }
 
 h1 {
-    font-size: 32px;
-    color: #fff;
+    font-size: 28px;
     margin-bottom: 20px;
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+/* Botones uniformes y efecto de zoom al presionar */
+.info-button {
+    background-color: #5fbc2d;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 15px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+    max-width: 220px;
+    text-align: center;
+}
+
+.info-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.info-button:active {
+    transform: scale(1.2);
 }
 
 .buttons-container {
@@ -63,64 +91,64 @@ h1 {
     gap: 15px;
     justify-items: center;
     align-items: center;
-    margin-top: 30px;
-}
-
-.info-button {
-    background-color: #5fbc2d;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 20px 30px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 100%;
-    max-width: 250px;
-    height: 70px;
-}
-
-.info-button:hover {
-    transform: scale(1.1);
-}
-
-.info-button:active {
-    transform: scale(1.2);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    max-width: 500px;
+    margin: 0 auto 40px; /* Espacio extra debajo de los botones */
 }
 
 footer {
     background-color: #6d6e72;
     color: #fff;
-    padding: 15px 0;
+    padding: 10px 0;
     text-align: center;
-    margin-top: 40px;
+    margin-top: 20px;
+}
+
+/* Animación del logo */
+@keyframes logo-animate {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
 }
 
 /* Estilos responsivos */
 @media (max-width: 768px) {
+    h1 {
+        font-size: 24px;
+    }
+
     .buttons-container {
-        grid-template-columns: 1fr 1fr;
-        gap: 15px;
+        grid-template-columns: 1fr 1fr; /* Dos columnas en pantallas más pequeñas */
+        gap: 10px;
     }
 
     .info-button {
         font-size: 16px;
-        max-width: 200px;
-        height: 60px;
-    }
-
-    header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    nav ul {
-        justify-content: flex-end;
-        width: 100%;
+        padding: 12px 16px;
     }
 
     .logo img {
-        max-width: 180px;
+        max-width: 160px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    .info-button {
+        font-size: 14px;
+        padding: 10px 14px;
+    }
+
+    header {
+        padding: 8px 0;
+    }
+
+    .logo img {
+        max-width: 140px;
     }
 }
