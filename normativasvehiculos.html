@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre Nosotros - InfoPolo</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="styles.css">
     <style>
         .form-container {
             display: none;
@@ -48,7 +48,7 @@
 <body>
     <header>
         <div class="logo">
-            <img src="img/logo.png" alt="InfoPolo Logo">
+            <img src="logo.png" alt="InfoPolo Logo">
         </div>
         <nav>
             <ul>
@@ -58,12 +58,12 @@
         </nav>
     </header>
     <main>
-        <h1>Normativas depósito Polo Oeste</h1>
+        <h1>Normativas Vehículos</h1>
         <p>Ingresar al depósito utilizando elementos de seguridad.</p>
 
         <!-- Imagen Central -->
         <div style="text-align: center;">
-            <img src="img/Seguridadintegra.png" alt="Seguridad Integra" style="max-width: 100%; height: auto;">
+            <img src="Seguridadintegra.png" alt="Seguridad Integra" style="max-width: 100%; height: auto;">
         </div>
 
         <!-- Checkbox y Formulario -->
@@ -73,11 +73,13 @@
             </label>
         </div>
 
-        <div class="form-container" id="formContainer">
-            <input type="text" id="document" placeholder="Documento de Identidad">
-            <input type="text" id="fullName" placeholder="Nombre Completo">
-            <button type="button" onclick="submitForm()">Aceptar</button>
-        </div>
+        <form id="securityForm" onsubmit="submitForm(event)">
+            <div class="form-container" id="formContainer">
+                <input type="text" id="document" name="document" placeholder="Documento de Identidad" required>
+                <input type="text" id="fullName" name="fullName" placeholder="Nombre Completo" required>
+                <button type="submit">Aceptar</button>
+            </div>
+        </form>
     </main>
     <footer>
         <p>&copy; 2024 InfoPolo</p>
@@ -92,10 +94,23 @@
             }
         });
 
-        function submitForm() {
-            const document = document.getElementById('document').value;
-            const fullName = document.getElementById('fullName').value;
-            alert('Formulario enviado:\nDocumento: ' + document + '\nNombre: ' + fullName);
+        function submitForm(event) {
+            event.preventDefault();
+
+            const form = document.getElementById('securityForm');
+            const data = new FormData(form);
+
+            fetch('https://script.google.com/macros/s/AKfycbztp347SXo4tLJEqfTJMhPX1yM9T4OmD9-Ad326l4x4zd77zB5qvMxzh8ILAW51BmzHRA/exec', {
+                method: 'POST',
+                body: data
+            })
+            .then(response => response.text())
+            .then(result => {
+                alert('Datos enviados correctamente: ' + result);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         }
     </script>
 </body>
