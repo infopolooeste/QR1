@@ -1,236 +1,166 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre Nosotros - InfoPolo</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Estilos generales */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #6d6e71; /* Fondo gris oscuro */
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #6d6e71; /* Fondo gris oscuro */
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
 
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #5fbc2d;
-            color: #fff;
-            padding: 10px 20px;
-        }
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #5fbc2d;
+    color: #fff;
+    padding: 10px 20px;
+}
 
-        .logo {
-            margin-right: 10mm; /* Mueve el logo 10 milímetros a la derecha */
-            animation: logo-animate 5s infinite; /* Animación del logo */
-        }
+.logo {
+    margin-right: 10mm; /* Mueve el logo 10 milímetros a la derecha */
+    animation: logo-animate 5s infinite; /* Animación del logo */
+}
 
-        .logo img {
-            max-width: 220px; /* Logo más grande */
-            height: auto;
-            transition: transform 0.5s ease;
-            animation: logo-animate 10s infinite alternate; /* Efecto de zoom del logo */
-        }
+.logo img {
+    max-width: 220px; /* Logo más grande */
+    height: auto;
+    transition: transform 0.5s ease;
+    animation: logo-animate 10s infinite alternate; /* Efecto de zoom del logo */
+}
 
-        .logo img:hover {
-            transform: scale(1.1); /* Efecto de zoom en el logo */
-        }
+.logo img:hover {
+    transform: scale(1.1); /* Efecto de zoom en el logo */
+}
 
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: flex-end;
-        }
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+}
 
-        nav ul li {
-            margin-left: 20px;
-        }
+nav ul li {
+    margin-left: 20px;
+}
 
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 18px;
-        }
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
 
-        main {
-            padding: 20px;
-            text-align: center;
-        }
+main {
+    padding: 20px;
+    text-align: center;
+}
 
-        h1 {
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
+h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
 
-        p {
-            font-size: 18px;
-            margin-bottom: 30px;
-        }
+p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
 
-        /* Contenedor de la imagen central */
-        .image-container {
-            text-align: center;
-            margin: 20px auto;
-        }
+/* Botones uniformes con sombreado constante y efecto de zoom al presionar */
+.info-button {
+    background-color: #5fbc2d;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 20px 30px; /* Tamaño de los botones */
+    font-size: 20px; /* Tamaño del texto */
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    max-width: 250px; /* Tamaño uniforme para todos los botones */
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Sombra constante */
+}
 
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-        }
+.info-button:hover {
+    transform: scale(1.1);
+}
 
-        /* Estilos del formulario */
-        .form-container {
-            margin: 20px auto;
-            text-align: left;
-            max-width: 400px;
-        }
+.info-button:active {
+    transform: scale(1.2); /* Mayor efecto de zoom al presionar */
+}
 
-        .form-container input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
+.buttons-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+    gap: 20px; /* Separación entre los botones */
+    justify-items: center;
+    align-items: center;
+    max-width: 600px; /* Ancho máximo ajustado */
+    margin: 0 auto 40px; /* Espacio extra debajo de los botones */
+}
 
-        .form-container label {
-            font-size: 16px;
-            margin-bottom: 5px;
-            display: inline-block;
-        }
+/* Estilos específicos para los botones mencionados */
+.security-button, .general-rules-button, .button5, .button6, .access-control-button, .how-to-get-button {
+    padding: 20px 30px; /* Tamaño uniforme para los botones */
+    font-size: 20px; /* Tamaño del texto */
+    margin: 10px; /* Separación adicional */
+}
 
-        .form-container input[type="checkbox"] {
-            margin-right: 10px;
-        }
+/* Estilos del footer */
+footer {
+    background-color: #6d6e71;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    margin-top: 20px;
+}
 
-        .form-container button {
-            background-color: #5fbc2d;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+/* Animación del logo */
+@keyframes logo-animate {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.1); /* Efecto de zoom más sutil */
+    }
+}
 
-        .form-container button:hover {
-            transform: scale(1.1);
-        }
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 24px;
+    }
 
-        .form-container button:active {
-            transform: scale(1.2);
-        }
+    .buttons-container {
+        grid-template-columns: 1fr 1fr; /* Dos columnas en pantallas más pequeñas */
+        gap: 15px;
+    }
 
-        /* Estilos del footer */
-        footer {
-            background-color: #6d6e71;
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
-            margin-top: 20px;
-        }
+    .info-button {
+        font-size: 18px;
+        padding: 15px 20px;
+    }
 
-        /* Animación del logo */
-        @keyframes logo-animate {
-            0% {
-                transform: scale(1);
-            }
-            100% {
-                transform: scale(1.1); /* Efecto de zoom más sutil */
-            }
-        }
+    .logo img {
+        max-width: 200px;
+    }
+}
 
-        /* Estilos responsivos */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 24px;
-            }
+@media (max-width: 480px) {
+    h1 {
+        font-size: 20px;
+    }
 
-            .form-container {
-                max-width: 90%;
-            }
+    .info-button {
+        font-size: 16px;
+        padding: 12px 16px;
+    }
 
-            .logo img {
-                max-width: 200px;
-            }
-        }
+    header {
+        padding: 8px 0;
+    }
 
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 20px;
-            }
-
-            header {
-                padding: 8px 0;
-            }
-
-            .logo img {
-                max-width: 160px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <div class="logo">
-            <img src="logo.png" alt="InfoPolo Logo">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="about.html">Sobre Nosotros</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <h1>Normativas Depósito Polo Oeste</h1>
-        <p>Ingresar al depósito utilizando elementos de seguridad.</p>
-
-        <!-- Contenedor de la imagen central -->
-        <div class="image-container">
-            <img src="Seguridadintegra.png" alt="Seguridad Integra">
-        </div>
-
-        <!-- Contenedor del formulario -->
-        <div class="form-container">
-            <label>
-                <input type="checkbox" id="checkbox" onchange="toggleForm()"> He leído y comprendido las normas de seguridad
-            </label>
-
-            <!-- Campos que aparecen al marcar el checkbox -->
-            <div id="formFields" style="display: none;">
-                <label for="documento">Documento de Identidad:</label>
-                <input type="text" id="documento" name="documento">
-
-                <label for="nombre">Nombre Completo:</label>
-                <input type="text" id="nombre" name="nombre">
-
-                <button type="button">Aceptar</button>
-            </div>
-        </div>
-    </main>
-    <footer>
-        <p>&copy; 2024 InfoPolo</p>
-    </footer>
-
-    <script>
-        function toggleForm() {
-            const checkbox = document.getElementById('checkbox');
-            const formFields = document.getElementById('formFields');
-            if (checkbox.checked) {
-                formFields.style.display = 'block';
-            } else {
-                formFields.style.display = 'none';
-            }
-        }
-    </script>
-</body>
-</html>
+    .logo img {
+        max-width: 160px;
+    }
+}
