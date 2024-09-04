@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Normativas Integra - InfoPolo</title>
+    <title>Sobre Nosotros - InfoPolo</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         .form-container {
@@ -73,7 +73,7 @@
             </label>
         </div>
 
-        <form action="send_email.php" method="post" id="securityForm">
+        <form id="securityForm" onsubmit="submitForm(event)">
             <div class="form-container" id="formContainer">
                 <input type="text" id="document" name="document" placeholder="Documento de Identidad" required>
                 <input type="text" id="fullName" name="fullName" placeholder="Nombre Completo" required>
@@ -93,6 +93,25 @@
                 formContainer.style.display = 'none';
             }
         });
+
+        function submitForm(event) {
+            event.preventDefault();
+
+            const form = document.getElementById('securityForm');
+            const data = new FormData(form);
+
+            fetch('https://script.google.com/macros/s/AKfycbwufyvEh81josR0aBUxhA3ixvqhbMuZKVK4IRoc_wVxF5wOeZguw_0kExvfqleT5TXANQ/exec', {
+                method: 'POST',
+                body: data
+            })
+            .then(response => response.text())
+            .then(result => {
+                alert('Datos enviados correctamente: ' + result);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
     </script>
 </body>
 </html>
