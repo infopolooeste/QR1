@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nosotros - InfoPolo</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .form-container {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .form-container input {
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 1em;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .form-container button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #5fbc2d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .form-container button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .checkbox-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="img/logo.png" alt="InfoPolo Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="about.html">Sobre Nosotros</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Normativas depósito Polo Oeste</h1>
+        <p>Ingresar al depósito utilizando elementos de seguridad.</p>
+
+        <!-- Imagen Central -->
+        <div style="text-align: center;">
+            <img src="img/Seguridadintegra.png" alt="Seguridad Integra" style="max-width: 100%; height: auto;">
+        </div>
+
+        <!-- Checkbox y Formulario -->
+        <div class="checkbox-container">
+            <label>
+                <input type="checkbox" id="securityCheckbox"> He leído y comprendido las normas de seguridad
+            </label>
+        </div>
+
+        <div class="form-container" id="formContainer">
+            <input type="text" id="document" placeholder="Documento de Identidad">
+            <input type="text" id="fullName" placeholder="Nombre Completo">
+            <button type="button" onclick="submitForm()">Aceptar</button>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 InfoPolo</p>
+    </footer>
+    <script>
+        document.getElementById('securityCheckbox').addEventListener('change', function() {
+            const formContainer = document.getElementById('formContainer');
+            if (this.checked) {
+                formContainer.style.display = 'block';
+            } else {
+                formContainer.style.display = 'none';
+            }
+        });
+
+        function submitForm() {
+            const document = document.getElementById('document').value;
+            const fullName = document.getElementById('fullName').value;
+            alert('Formulario enviado:\nDocumento: ' + document + '\nNombre: ' + fullName);
+        }
+    </script>
+</body>
+</html>
