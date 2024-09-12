@@ -22,7 +22,7 @@ header {
 }
 
 .logo img {
-    max-width: 220px; /* Logo más grande */
+    max-width: 200px; /* Logo más grande */
     height: auto;
     transition: transform 0.5s ease;
     animation: logo-animate 10s infinite alternate; /* Efecto de zoom del logo */
