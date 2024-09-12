@@ -17,7 +17,7 @@ header {
 }
 
 .logo {
-    margin-right: 12mm; /* Mueve el logo 10 milímetros a la derecha */
+    margin-right: 16mm; /* Mueve el logo 10 milímetros a la derecha */
     animation: logo-animate 5s infinite; /* Animación del logo */
 }
 
