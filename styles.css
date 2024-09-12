@@ -17,12 +17,12 @@ header {
 }
 
 .logo {
-    margin-right: 16mm; /* Mueve el logo 10 milímetros a la derecha */
+    margin-right: 20mm; /* Mueve el logo 10 milímetros a la derecha */
     animation: logo-animate 5s infinite; /* Animación del logo */
 }
 
 .logo img {
-    max-width: 200px; /* Logo más grande */
+    max-width: 160px; /* Logo más grande */
     height: auto;
     transition: transform 0.5s ease;
     animation: logo-animate 10s infinite alternate; /* Efecto de zoom del logo */
