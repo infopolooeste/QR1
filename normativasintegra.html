@@ -44,7 +44,7 @@
             text-align: center;
         }
 
-        /* Estilo para las palomitas blancas */
+        /* Estilo para las palomitas centradas a la izquierda */
         .safety-list {
             color: white;
             margin: 20px auto;
@@ -52,12 +52,12 @@
             padding: 10px;
             background-color: rgba(0, 0, 0, 0.6);
             border-radius: 8px;
-            text-align: left; /* Alineación del texto a la izquierda */
         }
 
         .safety-list ul {
             list-style-type: none;
-            padding-left: 0;
+            padding: 0;
+            text-align: left; /* Centrado a la izquierda */
         }
 
         .safety-list ul li {
@@ -67,7 +67,11 @@
         .safety-list ul li::before {
             content: "✔️";
             margin-right: 8px;
-            color: #5fbc2d;
+            color: white; /* Palomitas en blanco */
+        }
+
+        .safety-list ul li strong {
+            font-weight: bold; /* Negrita */
         }
     </style>
 </head>
@@ -92,25 +96,25 @@
             <img src="Bannerseguridad.png" alt="Seguridad Integra" style="max-width: 100%; height: auto;">
         </div>
 
-        <!-- Lista con palomitas blancas alineada a la izquierda -->
+        <!-- Lista con palomitas centradas a la izquierda -->
         <div class="safety-list">
             <ul>
-                <li>Caminar por las sendas peatonales: Utilice las vías designadas</li>
-                <li>Respetar la cartelería: Atención a las señales y manténgase atento al paso continuo de vehículos y maquinaria.</li>
-                <li>Uso de ropa reflectiva: Obligatorio. Las visitas recibirán chaleco reflectivo en caso de ser necesario.</li>
-                <li>Uso de zapatos de seguridad: Obligatorio. Las visitas recibirán punteras de seguridad en caso de ser necesario.</li>
-                <li>En caso de evacuación: Siga las instrucciones y evacúe de manera ordenada al sonar la alarma.</li>
-                <li>Conocer puntos de encuentro y salidas de emergencia: Familiarícese con ellos.</li>
-                <li>No obstruir: No tape ni bloquee los extintores, bocas de incendio, o salidas de emergencia.</li>
-                <li>Prohibido usar cámaras y celulares: Solo con autorización previa.</li>
-                <li>Prohibido ingerir alimentos dentro de las instalaciones: Use el comedor exclusivo para ello.</li>
-                <li>Prohibido fumar: Solo es aceptado en los puntos establecidos.</li>
-                <li>Transportistas: Colocar cuñas de seguridad en las ruedas traseras, apagar el vehículo durante la descarga, y mantenerlo apagado hasta que se indique lo contrario.</li>
-                <li>Uso de arnés de seguridad: Obligatorio para descargas que requieran su uso debido a la altura.</li>
-                <li>Uso de maquinaria: Solo con autorización. Solo se permite maquinaria eléctrica, no motores a combustión en el depósito.</li>
-                <li>Mercadería en altura: Debe estar correctamente enfilmada para evitar riesgos.</li>
-                <li>Elevador de mezzanine: Solo para cargas, no para personas.</li>
-                <li>Uso de maquinaria debajo de mezzanine: Permite solo en el pasillo central, no en los laterales.</li>
+                <li><strong>Caminar por las sendas peatonales</strong>: Utilice las vías designadas</li>
+                <li><strong>Respetar la cartelería</strong>: Atención a las señales y manténgase atento al paso continuo de vehículos y maquinaria.</li>
+                <li><strong>Uso de ropa reflectiva</strong>: Obligatorio. Las visitas recibirán chaleco reflectivo en caso de ser necesario.</li>
+                <li><strong>Uso de zapatos de seguridad</strong>: Obligatorio. Las visitas recibirán punteras de seguridad en caso de ser necesario.</li>
+                <li><strong>En caso de evacuación</strong>: Siga las instrucciones y evacúe de manera ordenada al sonar la alarma.</li>
+                <li><strong>Conocer puntos de encuentro y salidas de emergencia</strong>: Familiarícese con ellos.</li>
+                <li><strong>No obstruir</strong>: No tape ni bloquee los extintores, bocas de incendio, o salidas de emergencia.</li>
+                <li><strong>Prohibido usar cámaras y celulares</strong>: Solo con autorización previa.</li>
+                <li><strong>Prohibido ingerir alimentos dentro de las instalaciones</strong>: Use el comedor exclusivo para ello.</li>
+                <li><strong>Prohibido fumar</strong>: Solo es aceptado en los puntos establecidos.</li>
+                <li><strong>Transportistas</strong>: Colocar cuñas de seguridad en las ruedas traseras, apagar el vehículo durante la descarga, y mantenerlo apagado hasta que se indique lo contrario.</li>
+                <li><strong>Uso de arnés de seguridad</strong>: Obligatorio para descargas que requieran su uso debido a la altura.</li>
+                <li><strong>Uso de maquinaria</strong>: Solo con autorización. Solo se permite maquinaria eléctrica, no motores a combustión en el depósito.</li>
+                <li><strong>Mercadería en altura</strong>: Debe estar correctamente enfilmada para evitar riesgos.</li>
+                <li><strong>Elevador de mezzanine</strong>: Solo para cargas, no para personas.</li>
+                <li><strong>Uso de maquinaria debajo de mezzanine</strong>: Permite solo en el pasillo central, no en los laterales.</li>
             </ul>
         </div>
 
@@ -153,4 +157,18 @@
             const form = document.getElementById('securityForm');
             const data = new FormData(form);
 
-            fetch('https://script.google.com/macros/s/AKfycbwufyvEh81josR0aBUxhA3ixvqhbMuZKVK4IRoc_wVxF5
+            fetch('https://script.google.com/macros/s/AKfycbwufyvEh81josR0aBUxhA3ixvqhbMuZKVK4IRoc_wVxF5wOeZguw_0kExvfqleT5TXANQ/exec', {
+                method: 'POST',
+                body: data
+            })
+            .then(response => response.text())
+            .then(result => {
+                alert('Datos enviados correctamente: ' + result);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html>
