@@ -52,11 +52,12 @@
             padding: 10px;
             background-color: rgba(0, 0, 0, 0.6);
             border-radius: 8px;
+            text-align: left; /* Alineación del texto a la izquierda */
         }
 
         .safety-list ul {
             list-style-type: none;
-            padding: 0;
+            padding-left: 0;
         }
 
         .safety-list ul li {
@@ -91,7 +92,7 @@
             <img src="Bannerseguridad.png" alt="Seguridad Integra" style="max-width: 100%; height: auto;">
         </div>
 
-        <!-- Lista con palomitas blancas -->
+        <!-- Lista con palomitas blancas alineada a la izquierda -->
         <div class="safety-list">
             <ul>
                 <li>Caminar por las sendas peatonales: Utilice las vías designadas</li>
@@ -152,18 +153,4 @@
             const form = document.getElementById('securityForm');
             const data = new FormData(form);
 
-            fetch('https://script.google.com/macros/s/AKfycbwufyvEh81josR0aBUxhA3ixvqhbMuZKVK4IRoc_wVxF5wOeZguw_0kExvfqleT5TXANQ/exec', {
-                method: 'POST',
-                body: data
-            })
-            .then(response => response.text())
-            .then(result => {
-                alert('Datos enviados correctamente: ' + result);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        }
-    </script>
-</body>
-</html>
+            fetch('https://script.google.com/macros/s/AKfycbwufyvEh81josR0aBUxhA3ixvqhbMuZKVK4IRoc_wVxF5
