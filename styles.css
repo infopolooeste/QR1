@@ -17,12 +17,12 @@ header {
 }
 
 .logo {
-    margin-right: 20mm; /* Mueve el logo 10 milímetros a la derecha */
+    margin-right: 12mm; /* Mueve el logo 10 milímetros a la derecha */
     animation: logo-animate 5s infinite; /* Animación del logo */
 }
 
 .logo img {
-    max-width: 80px; /* Logo más grande */
+    max-width: 150px; /* Logo más grande */
     height: auto;
     transition: transform 0.5s ease;
     animation: logo-animate 10s infinite alternate; /* Efecto de zoom del logo */
@@ -133,7 +133,7 @@ footer {
 
     .buttons-container {
         grid-template-columns: 1fr 1fr; /* Dos columnas en pantallas más pequeñas */
-        gap: 15px;
+        gap: 20px;
     }
 
     .info-button {
@@ -142,7 +142,7 @@ footer {
     }
 
     .logo img {
-        max-width: 180px;
+        max-width: 200px;
     }
 }
 
@@ -161,6 +161,6 @@ footer {
     }
 
     .logo img {
-        max-width: 160px;
+        max-width: 200px;
     }
 }
