@@ -6,6 +6,30 @@
     <title>Sobre Nosotros - InfoPolo</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+        /* Ajustes para dispositivos móviles */
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 1.2em; /* Tamaño más pequeño para móviles */
+                padding: 0 10px;
+            }
+
+            p {
+                font-size: 1em; /* Ajustar el tamaño del párrafo */
+                padding: 0 10px;
+            }
+
+            .image-frame {
+                width: 90%; /* Asegurarse de que se ajuste en pantallas móviles */
+                max-width: 100%; 
+                margin: 10px auto; /* Ajuste de márgenes para móviles */
+            }
+
+            .image-frame img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
         /* Estilo del marco de las imágenes */
         .image-frame {
             width: 100%;
@@ -97,7 +121,13 @@
             images[currentIndex].classList.remove('visible');
             images[currentIndex].classList.add('hidden');
 
-            currentIndex = Math.floor(Math.random() * images.length);
+            // Evitar que la imagen repetida sea elegida aleatoriamente
+            let newIndex = currentIndex;
+            while (newIndex === currentIndex) {
+                newIndex = Math.floor(Math.random() * images.length);
+            }
+
+            currentIndex = newIndex;
 
             images[currentIndex].classList.remove('hidden');
             images[currentIndex].classList.add('visible');
