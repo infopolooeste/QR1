@@ -6,32 +6,47 @@
     <title>Sobre Nosotros - InfoPolo</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Estilos para el marco de las imágenes */
+        /* Estilo del marco de las imágenes */
         .image-frame {
             width: 100%;
             max-width: 600px;
-            height: 400px;
             margin: 20px auto;
             border: 5px solid #ccc;
-            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
             overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             position: relative;
         }
 
         .image-frame img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
+            transition: opacity 2s ease-in-out;
             position: absolute;
-            opacity: 0;
-            transition: opacity 2s ease; /* Transición suave de 2 segundos */
+            top: 0;
+            left: 0;
         }
 
-        .image-frame img.active {
-            opacity: 1; /* Solo la imagen activa es visible */
+        .hidden {
+            opacity: 0;
+        }
+
+        .visible {
+            opacity: 1;
+        }
+
+        /* Estilos adicionales */
+        h2 {
+            font-size: 1.5em;
+            color: white;
+            text-align: center;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.5;
+            margin: 0 20px;
+            text-align: justify;
+            color: white;
         }
     </style>
 </head>
@@ -51,39 +66,44 @@
         <h1>Sobre Polo Oeste</h1>
         <p>Completar con información que describa quienes somos y nuestras unidades de negocio.</p>
 
-        <!-- Marco de imágenes -->
-        <div class="image-frame">
-            <img src="20.jpg" alt="Imagen 1" class="active">
-            <img src="22.jpg" alt="Imagen 2">
-            <img src="24.jpg" alt="Imagen 3">
+        <!-- Texto proporcionado -->
+        <h2><strong>Un lugar único y en pleno crecimiento que cuenta con:</strong></h2>
+        <p>
+            - Ubicación estratégica dentro del país y respecto a la región.<br>
+            - Economía de escala.<br>
+            - Flexibilidad edilicia: desde depósitos standard a proyectos a medida.<br>
+            - Experiencia acumulada en desarrollo de infraestructura y edilicia con equipo de ingeniería dedicado.<br>
+            - Desarrollador-Usuario, involucramiento real en el funcionamiento diario.<br>
+            - Master Plan a largo plazo.<br>
+            - Un país que asegura estabilidad política y económica.
+        </p>
+
+        <!-- Marco de imágenes rotatorio -->
+        <div class="image-frame" id="imageFrame">
+            <img src="20.jpg" alt="Imagen 1" class="visible">
+            <img src="22.jpg" alt="Imagen 2" class="hidden">
+            <img src="24.jpg" alt="Imagen 3" class="hidden">
         </div>
     </main>
     <footer>
         <p>&copy; 2024 InfoPolo</p>
     </footer>
-    
+
     <script>
-        // Función para rotar imágenes aleatoriamente con efecto de transición
         const images = document.querySelectorAll('.image-frame img');
-        let currentImageIndex = 0;
+        let currentIndex = 0;
 
-        function showRandomImage() {
-            // Ocultar la imagen actual
-            images[currentImageIndex].classList.remove('active');
+        function rotateImages() {
+            images[currentIndex].classList.remove('visible');
+            images[currentIndex].classList.add('hidden');
 
-            // Seleccionar una nueva imagen de forma aleatoria
-            let randomIndex;
-            do {
-                randomIndex = Math.floor(Math.random() * images.length);
-            } while (randomIndex === currentImageIndex);
+            currentIndex = Math.floor(Math.random() * images.length);
 
-            // Actualizar la imagen actual y mostrarla
-            currentImageIndex = randomIndex;
-            images[currentImageIndex].classList.add('active');
+            images[currentIndex].classList.remove('hidden');
+            images[currentIndex].classList.add('visible');
         }
 
-        // Cambiar imagen cada 4 segundos
-        setInterval(showRandomImage, 4000);
+        setInterval(rotateImages, 4000); // Cambia cada 4 segundos
     </script>
 </body>
 </html>
