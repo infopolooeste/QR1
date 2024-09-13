@@ -5,6 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre Nosotros - InfoPolo</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos para el marco de las imágenes */
+        .image-frame {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 20px auto;
+            border: 5px solid #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none; /* Ocultamos las imágenes inicialmente */
+        }
+
+        .image-frame img.active {
+            display: block; /* Mostramos solo la imagen activa */
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -21,10 +48,40 @@
     <main>
         <h1>Sobre Polo Oeste</h1>
         <p>Completar con información que describa quienes somos y nuestras unidades de negocio.</p>
+
+        <!-- Marco de imágenes -->
+        <div class="image-frame">
+            <img src="20.jpg" alt="Imagen 1" class="active">
+            <img src="22.jpg" alt="Imagen 2">
+            <img src="24.jpg" alt="Imagen 3">
+        </div>
     </main>
     <footer>
         <p>&copy; 2024 InfoPolo</p>
     </footer>
-    <script src="js/scripts.js"></script>
+    
+    <script>
+        // Función para rotar imágenes aleatoriamente
+        const images = document.querySelectorAll('.image-frame img');
+        let currentImageIndex = 0;
+
+        function showRandomImage() {
+            // Ocultar la imagen actual
+            images[currentImageIndex].classList.remove('active');
+
+            // Seleccionar una nueva imagen de forma aleatoria
+            let randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * images.length);
+            } while (randomIndex === currentImageIndex);
+
+            // Actualizar la imagen actual y mostrarla
+            currentImageIndex = randomIndex;
+            images[currentImageIndex].classList.add('active');
+        }
+
+        // Cambiar imagen cada 4 segundos
+        setInterval(showRandomImage, 4000);
+    </script>
 </body>
 </html>
