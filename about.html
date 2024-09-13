@@ -25,11 +25,13 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: none; /* Ocultamos las imágenes inicialmente */
+            position: absolute;
+            opacity: 0;
+            transition: opacity 2s ease; /* Transición suave de 2 segundos */
         }
 
         .image-frame img.active {
-            display: block; /* Mostramos solo la imagen activa */
+            opacity: 1; /* Solo la imagen activa es visible */
         }
     </style>
 </head>
@@ -61,7 +63,7 @@
     </footer>
     
     <script>
-        // Función para rotar imágenes aleatoriamente
+        // Función para rotar imágenes aleatoriamente con efecto de transición
         const images = document.querySelectorAll('.image-frame img');
         let currentImageIndex = 0;
 
