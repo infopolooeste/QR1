@@ -20,7 +20,6 @@
 
             .image-frame {
                 width: 90%; /* Asegurarse de que se ajuste en pantallas móviles */
-                max-width: 100%; 
                 margin: 10px auto; /* Ajuste de márgenes para móviles */
             }
 
@@ -37,25 +36,18 @@
             margin: 20px auto;
             border: 5px solid #ccc;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
             position: relative;
         }
 
         .image-frame img {
             width: 100%;
             height: auto;
+            display: none;
             transition: opacity 2s ease-in-out;
-            position: absolute;
-            top: 0;
-            left: 0;
         }
 
-        .hidden {
-            opacity: 0;
-        }
-
-        .visible {
-            opacity: 1;
+        .image-frame img.active {
+            display: block;
         }
 
         /* Estilos adicionales */
@@ -82,11 +74,13 @@
         <nav>
             <ul>
                 <li><a href="index.html">Inicio</a></li>
+                <li><a href="about.html">Sobre Nosotros</a></li>
             </ul>
         </nav>
     </header>
     <main>
         <h1>Sobre Polo Oeste</h1>
+        <p>Completar con información que describa quienes somos y nuestras unidades de negocio.</p>
 
         <!-- Texto proporcionado -->
         <h2><strong>Un lugar único y en pleno crecimiento que cuenta con:</strong></h2>
@@ -102,9 +96,9 @@
 
         <!-- Marco de imágenes rotatorio -->
         <div class="image-frame" id="imageFrame">
-            <img src="20.jpg" alt="Imagen 1" class="visible">
-            <img src="22.jpg" alt="Imagen 2" class="hidden">
-            <img src="24.jpg" alt="Imagen 3" class="hidden">
+            <img src="20.jpg" alt="Imagen 1" class="active">
+            <img src="22.jpg" alt="Imagen 2">
+            <img src="24.jpg" alt="Imagen 3">
         </div>
     </main>
     <footer>
@@ -116,22 +110,21 @@
         let currentIndex = 0;
 
         function rotateImages() {
-            images[currentIndex].classList.remove('visible');
-            images[currentIndex].classList.add('hidden');
+            images[currentIndex].classList.remove('active');
 
-            // Evitar que la imagen repetida sea elegida aleatoriamente
+            // Seleccionar una nueva imagen aleatoriamente que no sea la actual
             let newIndex = currentIndex;
             while (newIndex === currentIndex) {
                 newIndex = Math.floor(Math.random() * images.length);
             }
 
             currentIndex = newIndex;
-
-            images[currentIndex].classList.remove('hidden');
-            images[currentIndex].classList.add('visible');
+            images[currentIndex].classList.add('active');
         }
 
-        setInterval(rotateImages, 4000); // Cambia cada 4 segundos
+        // Rotar las imágenes cada 4 segundos
+        setInterval(rotateImages, 4000);
     </script>
 </body>
 </html>
+
