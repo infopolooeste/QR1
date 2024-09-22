@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cómo Llegar - InfoPolo</title>
     <link rel="stylesheet" href="css/styles.css">
+
+    <!-- CSS de Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+
+    <!-- CSS de Leaflet Routing Machine -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+
+    <style>
+        /* Estilo para el contenedor del mapa */
+        #map {
+            height: 600px;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -21,15 +35,97 @@
     </header>
     <main>
         <h1>Oficinas Polo Oeste</h1>
-        <p>Consulta la siguiente imagen para obtener detalles sobre cómo llegar.</p>
-        <div class="image-container">
-                <frame><iframe src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d1375.0382593198958!2d-56.28807108144493!3d-34.85761708820812!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d-34.857835699999995!2d-56.2868339!4m3!3m2!1d-34.8569345!2d-56.2869746!5e1!3m2!1ses!2suy!4v1722430456822!5m2!1ses!2suy" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></frame>
-        </div>
+        <p>Consulta el mapa interactivo para obtener detalles sobre cómo llegar.</p>
+
+        <!-- Contenedor para el mapa -->
+        <div id="map"></div>
+
         <p>Para obtener direcciones detalladas, haz clic en el siguiente enlace:</p>
-        <a href="https://www.google.com/maps/dir/Polo+Oeste,+Camino+Bajo+de+la+Petisa+5328,+12800+Montevideo,+Departamento+de+Montevideo/-34.857809,-56.286824/@-34.86175,-56.2897469,1903m/data=!3m2!1e3!4b1!4m8!4m7!1m5!1m1!1s0x95a1d555c1fc1edb:0x17489e9091a71beb!2m2!1d-56.2874142!2d-34.8582667!1m0?entry=ttu" target="_blank">Ver en Google Maps</a>
+        <a href="https://www.openstreetmap.org/directions?engine=graphhopper_foot&route=34.8576171%2C-56.2880711%3B-34.8576171%2C-56.2880711" target="_blank">Ver en OpenStreetMap</a>
     </main>
     <footer>
         <p>&copy; 2024 InfoPolo</p>
     </footer>
+
+    <!-- JS de Leaflet -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+
+    <!-- JS de Leaflet Routing Machine -->
+    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+
+    <script>
+        // Inicializar el mapa en la ubicación deseada
+        const map = L.map('map').setView([-34.857617, -56.288071], 15); // Coordenadas y nivel de zoom
+
+        // Cargar el mapa desde OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Añadir un marcador en la ubicación de las oficinas
+        const destination = L.marker([-34.857617, -56.288071]).addTo(map)
+            .bindPopup('Oficinas Polo Oeste')
+            .openPopup();
+
+        // Geolocalización en tiempo real
+        map.locate({ setView: true, maxZoom: 16 });
+
+        // Función para trazar la ruta desde la ubicación actual hasta el destino
+        function onLocationFound(e) {
+            const userLocation = e.latlng;
+
+            // Añadir el marcador de la ubicación del usuario
+            L.marker(userLocation).addTo(map)
+                .bindPopup("Tu ubicación").openPopup();
+
+            // Añadir la ruta desde la ubicación actual hasta el destino
+            L.Routing.control({
+                waypoints: [
+                    L.latLng(userLocation.lat, userLocation.lng), // Ubicación actual
+                    L.latLng(-34.857014, -56.286849)              // Destino (Polo Oeste)
+                ],
+                lineOptions: {
+                    styles: [{ color: 'blue', weight: 4 }]        // Estilo de la línea de ruta
+                },
+                routeWhileDragging: true,
+                router: L.Routing.osrmv1({
+                    serviceUrl: 'https://router.project-osrm.org/route/v1',  // Servicio OSRM
+                }),
+                language: 'es',                                  // Idioma español
+                formatter: new L.Routing.Formatter({
+                    language: 'es'  // Traducción de las instrucciones a español
+                }),
+                createMarker: function() { return null; }         // Omitir los marcadores automáticos
+            }).addTo(map);
+        }
+
+        map.on('locationfound', onLocationFound);
+
+        // Mostrar error si no puede obtener la ubicación
+        function onLocationError(e) {
+            alert(e.message);
+        }
+
+        map.on('locationerror', onLocationError);
+
+        // Agregar sitios frecuentes
+        const sitiosFrecuentes = [
+            { nombre: "Ubicación 1", lat: -34.860000, lng: -56.290000 },
+            { nombre: "Ubicación 2", lat: -34.858500, lng: -56.285000 },
+            { nombre: "Ubicación 3", lat: -34.855000, lng: -56.287500 },
+            { nombre: "Ubicación 4", lat: -34.860800, lng: -56.286500 },
+            { nombre: "Ubicación 5", lat: -34.859900, lng: -56.288200 },
+            { nombre: "Ubicación 6", lat: -34.857200, lng: -56.284500 },
+            { nombre: "Ubicación 7", lat: -34.855500, lng: -56.290000 },
+            { nombre: "Ubicación 8", lat: -34.860300, lng: -56.285300 },
+            { nombre: "Ubicación 9", lat: -34.858000, lng: -56.283000 },
+            { nombre: "Ubicación 10", lat: -34.859500, lng: -56.287000 },
+        ];
+
+        sitiosFrecuentes.forEach(function (sitio) {
+            L.marker([sitio.lat, sitio.lng]).addTo(map)
+                .bindPopup(sitio.nombre);
+        });
+    </script>
 </body>
 </html>
