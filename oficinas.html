@@ -62,7 +62,7 @@
         }).addTo(map);
 
         // Añadir un marcador en la ubicación de las oficinas
-        const destination = L.marker([-34.857617, -56.288071]).addTo(map)
+        const destination = L.marker([-34.856995, -56.286757]).addTo(map)
             .bindPopup('Oficinas Polo Oeste')
             .openPopup();
 
@@ -81,7 +81,7 @@
             L.Routing.control({
                 waypoints: [
                     L.latLng(userLocation.lat, userLocation.lng), // Ubicación actual
-                    L.latLng(-34.857014, -56.286849)              // Destino (Polo Oeste)
+                    L.latLng(-34.856995, -56.286757)              // Destino (Polo Oeste)
                 ],
                 lineOptions: {
                     styles: [{ color: 'blue', weight: 4 }]        // Estilo de la línea de ruta
