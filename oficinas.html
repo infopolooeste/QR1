@@ -107,18 +107,6 @@
 
         map.on('locationerror', onLocationError);
 
-        // Agregar sitios frecuentes
-        const sitiosFrecuentes = [
-            { nombre: "Depósito Polo Oeste", lat: -34.857936, lng: -56.286853 },
-            { nombre: "Sodimac", lat: -34.858064, lng: -56.287485 },
-            { nombre: "Vasa", lat: -34.857612, lng: -56.287507 },
-            { nombre: "Aduana", lat: -34.857333, lng: -56.287571 },
-            { nombre: "Conaprole", lat: -34.856584, lng: -56.287627 },
-            { nombre: "Unilever", lat: -34.856234, lng: -56.287078 },
-            { nombre: "James", lat: -34.855846, lng: -56.287789 },
-            { nombre: "H&M", lat: -34.855068, lng: -56.287976 },
-            { nombre: "Depósito de Vehículos", lat: -34.854351, lng: -56.287882 },
-        ];
 
         sitiosFrecuentes.forEach(function (sitio) {
             L.marker([sitio.lat, sitio.lng]).addTo(map)
