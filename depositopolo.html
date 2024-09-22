@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cómo Llegar - InfoPolo</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- CSS de Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+
+    <!-- CSS de Leaflet Routing Machine -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+
+    <style>
+        /* Estilo para el contenedor del mapa */
+        #map {
+            height: 600px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="http://www.polooeste.com.uy" class="logo">
+            <img src="logo.png" alt="InfoPolo Logo">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="maps.html">Cómo Llegar</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Oficinas Polo Oeste</h1>
+        <p>Consulta el mapa interactivo para obtener detalles sobre cómo llegar.</p>
+
+        <!-- Contenedor para el mapa -->
+        <div id="map"></div>
+
+        <p>Para obtener direcciones detalladas, haz clic en el siguiente enlace:</p>
+        <a href="https://www.openstreetmap.org/directions?engine=graphhopper_foot&route=34.8576171%2C-56.2880711%3B-34.8576171%2C-56.2880711" target="_blank">Ver en OpenStreetMap</a>
+    </main>
+    <footer>
+        <p>&copy; 2024 InfoPolo</p>
+    </footer>
+
+    <!-- JS de Leaflet -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+
+    <!-- JS de Leaflet Routing Machine -->
+    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+
+    <script>
+        // Inicializar el mapa en la ubicación deseada
+        const map = L.map('map').setView([-34.857617, -56.288071], 15); // Coordenadas y nivel de zoom
+
+        // Cargar el mapa desde OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Añadir un marcador en la ubicación de las oficinas
+        const destination = L.marker([-34.856995, -56.286757]).addTo(map)
+            .bindPopup('Oficinas Polo Oeste')
+            .openPopup();
+
+        // Geolocalización en tiempo real
+        map.locate({ setView: true, maxZoom: 16 });
+
+        // Función para trazar la ruta desde la ubicación actual hasta el destino
+        function onLocationFound(e) {
+            const userLocation = e.latlng;
+
+            // Añadir el marcador de la ubicación del usuario
+            L.marker(userLocation).addTo(map)
+                .bindPopup("Tu ubicación").openPopup();
+
+            // Añadir la ruta desde la ubicación actual hasta el destino
+            L.Routing.control({
+                waypoints: [
+                    L.latLng(userLocation.lat, userLocation.lng), // Ubicación actual
+                    L.latLng(-34.856995, -56.286757)              // Destino (Polo Oeste)
+                ],
+                lineOptions: {
+                    styles: [{ color: 'blue', weight: 4 }]        // Estilo de la línea de ruta
+                },
+                routeWhileDragging: true,
+                router: L.Routing.osrmv1({
+                    serviceUrl: 'https://router.project-osrm.org/route/v1',  // Servicio OSRM
+                }),
+                language: 'es',                                  // Idioma español
+                formatter: new L.Routing.Formatter({
+                    language: 'es'  // Traducción de las instrucciones a español
+                }),
+                createMarker: function() { return null; }         // Omitir los marcadores automáticos
+            }).addTo(map);
+        }
+
+        map.on('locationfound', onLocationFound);
+
+        // Mostrar error si no puede obtener la ubicación
+        function onLocationError(e) {
+            alert(e.message);
+        }
+
+        map.on('locationerror', onLocationError);
+
+        // Agregar sitios frecuentes
+        const sitiosFrecuentes = [
+            { nombre: "Depósito Polo Oeste", lat: -34.857936, lng: -56.286853 },
+            { nombre: "Sodimac", lat: -34.858064, lng: -56.287485 },
+            { nombre: "Vasa", lat: -34.857612, lng: -56.287507 },
+            { nombre: "Aduana", lat: -34.857333, lng: -56.287571 },
+            { nombre: "Conaprole", lat: -34.856584, lng: -56.287627 },
+            { nombre: "Unilever", lat: -34.856234, lng: -56.287078 },
+            { nombre: "James", lat: -34.855846, lng: -56.287789 },
+            { nombre: "H&M", lat: -34.855068, lng: -56.287976 },
+            { nombre: "Depósito de Vehículos", lat: -34.854351, lng: -56.287882 },
+        ];
+
+        sitiosFrecuentes.forEach(function (sitio) {
+            L.marker([sitio.lat, sitio.lng]).addTo(map)
+                .bindPopup(sitio.nombre);
+        });
+    </script>
+</body>
+</html>
