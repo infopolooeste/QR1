@@ -33,7 +33,7 @@
         </nav>
     </header>
     <main>
-        <h1>Oficinas Polo Oeste</h1>
+        <h1>Conaprole</h1>
         <p>Consulta el mapa interactivo para obtener detalles sobre cómo llegar.</p>
 
         <!-- Contenedor para el mapa -->
@@ -54,7 +54,7 @@
 
     <script>
         // Inicializar el mapa en la ubicación deseada
-        const map = L.map('map').setView([-34.857617, -56.288071], 15); // Coordenadas y nivel de zoom
+        const map = L.map('map').setView([-34.856584, -56.287627], 15); // Coordenadas y nivel de zoom
 
         // Cargar el mapa desde OpenStreetMap
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -62,8 +62,8 @@
         }).addTo(map);
 
         // Añadir un marcador en la ubicación de las oficinas
-        const destination = L.marker([-34.856995, -56.286757]).addTo(map)
-            .bindPopup('Oficinas Polo Oeste')
+        const destination = L.marker([-34.856584, -56.287627]).addTo(map)
+            .bindPopup('Conaprole')
             .openPopup();
 
         // Geolocalización en tiempo real
@@ -81,7 +81,7 @@
             L.Routing.control({
                 waypoints: [
                     L.latLng(userLocation.lat, userLocation.lng), // Ubicación actual
-                    L.latLng(-34.856995, -56.286757)              // Destino (Polo Oeste)
+                    L.latLng(-34.856584, -56.287627)              // Destino (Polo Oeste)
                 ],
                 lineOptions: {
                     styles: [{ color: 'blue', weight: 4 }]        // Estilo de la línea de ruta
@@ -106,19 +106,6 @@
         }
 
         map.on('locationerror', onLocationError);
-
-        // Agregar sitios frecuentes
-        const sitiosFrecuentes = [
-            { nombre: "Depósito Polo Oeste", lat: -34.857936, lng: -56.286853 },
-            { nombre: "Sodimac", lat: -34.858064, lng: -56.287485 },
-            { nombre: "Vasa", lat: -34.857612, lng: -56.287507 },
-            { nombre: "Aduana", lat: -34.857333, lng: -56.287571 },
-            { nombre: "Conaprole", lat: -34.856584, lng: -56.287627 },
-            { nombre: "Unilever", lat: -34.856234, lng: -56.287078 },
-            { nombre: "James", lat: -34.855846, lng: -56.287789 },
-            { nombre: "H&M", lat: -34.855068, lng: -56.287976 },
-            { nombre: "Depósito de Vehículos", lat: -34.854351, lng: -56.287882 },
-        ];
 
         sitiosFrecuentes.forEach(function (sitio) {
             L.marker([sitio.lat, sitio.lng]).addTo(map)
