@@ -20,22 +20,41 @@
     <main>
         <h1>Cómo Llegar</h1>
         <div class="buttons-container">
-            <button class="info-button" onclick="window.location.href='depositopolo.html';">Depósito Polo Oeste</button>
-            <button class="info-button" onclick="window.location.href='sodimac.html';">Sodimac</button>
-            <button class="info-button" onclick="window.location.href='vasa.html';">Vasa</button>
-            <button class="info-button" onclick="window.location.href='aduana.html';">Aduana</button>
-            <button class="info-button" onclick="window.location.href='conaprole.html';">Conaprole</button>
-            <button class="info-button" onclick="window.location.href='unilever.html';">Unilever</button>
-            <button class="info-button" onclick="window.location.href='james.html';">James</button>
-            <button class="info-button" onclick="window.location.href='h&m.html';">H&M</button>
-            <button class="info-button" onclick="window.location.href='vehiculos.html';">Depósito de Vehículos</button>
-            <button class="info-button" onclick="window.location.href='oficinas.html';">Oficinas</button>
+            <button class="info-button" onclick="getDirections(-34.85773, -56.28718);">Depósito Polo Oeste</button>
+            <button class="info-button" onclick="getDirections(-34.85818, -56.28736);">Sodimac</button>
+            <button class="info-button" onclick="getDirections(-34.85716, -56.28742);">Vasa</button>
+            <button class="info-button" onclick="getDirections(-34.85723, -56.28741);">Aduana</button>
+            <button class="info-button" onclick="getDirections(-34.85653, -56.28755);">Conaprole</button>
+            <button class="info-button" onclick="getDirections(-34.85618, -56.28712);">Unilever</button>
+            <button class="info-button" onclick="getDirections(-34.86340, -56.28570);">James</button>
+            <button class="info-button" onclick="getDirections(-34.85573, -56.28771);">H&M</button>
+            <button class="info-button" onclick="getDirections(-34.85446, -56.28785);">Depósito de Vehículos</button>
+            <button class="info-button" onclick="getDirections(-34.85673, -56.28682);">Oficinas</button>
+            <button class="info-button" onclick="getDirections(-34.85484, -56.28579);">Cristalpet</button>
         </div>
     </main>
     <footer>
         <p>&copy; 2024 InfoPolo</p>
     </footer>
+
+    <script>
+        function getDirections(destinationLat, destinationLng) {
+            // Verificar si el navegador soporta geolocalización
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    const userLat = position.coords.latitude;
+                    const userLng = position.coords.longitude;
+
+                    // Redirigir a Google Maps con la ruta desde la ubicación actual
+                    const directionsUrl = `https://www.google.com/maps/dir/?api=1&origin=${userLat},${userLng}&destination=${destinationLat},${destinationLng}&travelmode=driving`;
+                    window.location.href = directionsUrl;
+                }, function(error) {
+                    alert('No se pudo obtener tu ubicación. Por favor, habilita la geolocalización.');
+                });
+            } else {
+                alert('Tu navegador no soporta geolocalización.');
+            }
+        }
+    </script>
 </body>
 </html>
-
-
